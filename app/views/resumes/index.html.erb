@@ -1,3 +1,5 @@
+
+
 <div>
   <div>
     <h1>
@@ -89,42 +91,8 @@
         </th>
       </tr>
 
-      <% @list_of_resumes.each do |a_resume| %>
-      <tr>
-        <td>
-          <%= a_resume.id %>
-        </td>
-
-        <td>
-          <%= a_resume.name %>
-        </td>
-
-        <td>
-          <%= a_resume.user_id %>
-        </td>
-
-        <td>
-          <%= a_resume.display %>
-        </td>
-
-        <td>
-          <%= a_resume.objective %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_resume.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_resume.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/resumes/<%= a_resume.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
+      <%# @list_of_resumes.each do |a_resume| %>
+            <%# end %>
     </table>
   </div>
 </div>
