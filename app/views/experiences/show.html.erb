@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Experience #<%= @the_experience.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/experiences">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_experience/<%= @the_experience.id %>">
+          Delete experience
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Resume
+      </dt>
+      <dd>
+        <%= @the_experience.resume_id %>
+      </dd>
+
+      <dt>
+        Job
+      </dt>
+      <dd>
+        <%= @the_experience.job_id %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_experience.description %>
+      </dd>
+
+      <dt>
+        Display order
+      </dt>
+      <dd>
+        <%= @the_experience.display_order %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_experience.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_experience.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit experience
+    </h2>
+
+    <form action="/modify_experience/<%= @the_experience.id %>"  method="post" >
+      <div>
+        <label for="resume_id_box">
+          Resume
+        </label>
+
+        <input type="text" id="resume_id_box" name="query_resume_id" value="<%= @the_experience.resume_id %>">
+      </div>
+
+      <div>
+        <label for="job_id_box">
+          Job
+        </label>
+
+        <input type="text" id="job_id_box" name="query_job_id" value="<%= @the_experience.job_id %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_experience.description %>">
+      </div>
+
+      <div>
+        <label for="display_order_box">
+          Display order
+        </label>
+
+        <input type="text" id="display_order_box" name="query_display_order" value="<%= @the_experience.display_order %>">
+      </div>
+
+      <button>
+        Update experience
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Employer #<%= @the_employer.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/employers">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_employer/<%= @the_employer.id %>">
+          Delete employer
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_employer.name %>
+      </dd>
+
+      <dt>
+        Location
+      </dt>
+      <dd>
+        <%= @the_employer.location %>
+      </dd>
+
+      <dt>
+        Jobs count
+      </dt>
+      <dd>
+        <%= @the_employer.jobs_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_employer.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_employer.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit employer
+    </h2>
+
+    <form action="/modify_employer/<%= @the_employer.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_employer.name %>">
+      </div>
+
+      <div>
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="query_location" value="<%= @the_employer.location %>">
+      </div>
+
+      <div>
+        <label for="jobs_count_box">
+          Jobs count
+        </label>
+
+        <input type="text" id="jobs_count_box" name="query_jobs_count" value="<%= @the_employer.jobs_count %>">
+      </div>
+
+      <button>
+        Update employer
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

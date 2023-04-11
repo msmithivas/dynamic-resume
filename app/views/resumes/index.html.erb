@@ -1,0 +1,132 @@
+<div>
+  <div>
+    <h1>
+      List of all resumes
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new resume
+    </h2>
+
+    <form action="/insert_resume" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <input type="checkbox" id="display_box" name="query_display" value="1">
+
+        <label for="display_box">Display</label>
+      </div>
+
+      <div>
+        <label for="objective_box">
+          Objective
+        </label>
+
+        <textarea id="objective_box" name="query_objective" rows="3"></textarea>
+      </div>
+
+      <button>
+        Create resume
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Display
+        </th>
+
+        <th>
+          Objective
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_resumes.each do |a_resume| %>
+      <tr>
+        <td>
+          <%= a_resume.id %>
+        </td>
+
+        <td>
+          <%= a_resume.name %>
+        </td>
+
+        <td>
+          <%= a_resume.user_id %>
+        </td>
+
+        <td>
+          <%= a_resume.display %>
+        </td>
+
+        <td>
+          <%= a_resume.objective %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_resume.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_resume.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/resumes/<%= a_resume.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

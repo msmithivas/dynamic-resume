@@ -1,0 +1,134 @@
+<div>
+  <div>
+    <h1>
+      List of all experiences
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new experience
+    </h2>
+
+    <form action="/insert_experience" method="post">
+      <div>
+        <label for="resume_id_box">
+          Resume
+        </label>
+
+        <input type="text" id="resume_id_box" name="query_resume_id">
+      </div>
+
+      <div>
+        <label for="job_id_box">
+          Job
+        </label>
+
+        <input type="text" id="job_id_box" name="query_job_id">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description">
+      </div>
+
+      <div>
+        <label for="display_order_box">
+          Display order
+        </label>
+
+        <input type="text" id="display_order_box" name="query_display_order">
+      </div>
+
+      <button>
+        Create experience
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Resume
+        </th>
+
+        <th>
+          Job
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Display order
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_experiences.each do |an_experience| %>
+      <tr>
+        <td>
+          <%= an_experience.id %>
+        </td>
+
+        <td>
+          <%= an_experience.resume_id %>
+        </td>
+
+        <td>
+          <%= an_experience.job_id %>
+        </td>
+
+        <td>
+          <%= an_experience.description %>
+        </td>
+
+        <td>
+          <%= an_experience.display_order %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_experience.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_experience.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/experiences/<%= an_experience.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

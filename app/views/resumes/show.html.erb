@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Resume #<%= @the_resume.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/resumes">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_resume/<%= @the_resume.id %>">
+          Delete resume
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_resume.name %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_resume.user_id %>
+      </dd>
+
+      <dt>
+        Display
+      </dt>
+      <dd>
+        <%= @the_resume.display %>
+      </dd>
+
+      <dt>
+        Objective
+      </dt>
+      <dd>
+        <%= @the_resume.objective %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_resume.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_resume.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit resume
+    </h2>
+
+    <form action="/modify_resume/<%= @the_resume.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_resume.name %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_resume.user_id %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="display_box" name="query_display" value="1" <%= "checked" if @the_resume.display %>>
+
+        <label for="display_box">
+            Display
+        </label>
+      </div>
+
+      <div>
+        <label for="objective_box">
+          Objective
+        </label>
+
+        <textarea id="objective_box" name="query_objective"><%= @the_resume.objective %></textarea>
+      </div>
+
+      <button>
+        Update resume
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
