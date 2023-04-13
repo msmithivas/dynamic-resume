@@ -21,14 +21,14 @@ class ExperiencesController < ApplicationController
     the_experience = Experience.new
     the_experience.resume_id = params.fetch("query_resume_id")
     the_experience.job_id = params.fetch("query_job_id")
-    the_experience.description = params.fetch("query_description")
+    # the_experience.description = params.fetch("query_description")
     the_experience.display_order = params.fetch("query_display_order")
 
     if the_experience.valid?
       the_experience.save
-      redirect_to("/experiences", { :notice => "Experience created successfully." })
+      redirect_to("/profiles", { :notice => "Experience created successfully." })
     else
-      redirect_to("/experiences", { :alert => the_experience.errors.full_messages.to_sentence })
+      redirect_to("/profiles", { :alert => the_experience.errors.full_messages.to_sentence })
     end
   end
 

@@ -18,57 +18,34 @@
       </div>
     </div>
 
-    <dl>
-      <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @the_resume.name %>
-      </dd>
-
-      <dt>
-        User
-      </dt>
-      <dd>
-        <%= @the_resume.user_id %>
-      </dd>
-
-      <dt>
-        Display
-      </dt>
-      <dd>
-        <%= @the_resume.display %>
-      </dd>
-
-      <dt>
-        Objective
-      </dt>
-      <dd>
-        <%= @the_resume.objective %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_resume.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_resume.updated_at) %> ago
-      </dd>
-    </dl>
-  </div>
+      </div>
 </div>
 
 <hr>
 
+<h1 class="text-center"> Sample resume </h1>
+
+<h4> Objective:</h4>
+<p></p>
+<p class="lead">
+<%= @the_resume.objective %></p>
+
+<hr>
+
+<% @the_resume.experiences.each do |exp| %>
+<span class="badge text-bg-primary"><%= exp.job.title %></span>
+<p></p>
+<%= exp.job.description %>
+<p></p>
+<%= "Skills: " + exp.job.skills %>
+<hr>
+
+<% end %>
+
 
 <div>
   <div>
+
     <h2>
       Edit resume
     </h2>
