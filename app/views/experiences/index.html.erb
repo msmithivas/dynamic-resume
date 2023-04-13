@@ -4,6 +4,17 @@
       Build a career profile
     </h1>
   </div>
+  For each resume, you can create a profile, which will show the jobs you wish to display.
+</div>
+
+<div class="container">
+    <%= rails_db_data_table 'resumes', footer: false, 
+          columns:['id', 'name', 'user_id', 'objective', 'display'],
+          header: true,
+          limit: 20,
+          order_by: :id,
+          order: :asc
+    %>
 </div>
 
 <hr>
@@ -15,33 +26,33 @@
     </h2>
 
     <form action="/insert_experience" method="post">
-      <div>
-        <label for="resume_id_box">
+      <div class="mb-3">
+        <label for="resume_id_box" class="form-label">
           Resume
         </label>
 
-        <input type="text" id="resume_id_box" name="query_resume_id">
+        <input type="text" id="resume_id_box" name="query_resume_id" class="form-control">
       </div>
 
-      <div>
-        <label for="job_id_box">
+      <div class="mb-3">
+        <label for="job_id_box" class="form-label">
           Job
         </label>
 
-        <input type="text" id="job_id_box" name="query_job_id">
+        <input type="text" id="job_id_box" name="query_job_id" class="form-control">
       </div>
 
       
 
-      <div>
-        <label for="display_order_box">
+      <div class="mb-3">
+        <label for="display_order_box" class="form-label">
           Display order
         </label>
 
-        <input type="text" id="display_order_box" name="query_display_order">
+        <input type="text" id="display_order_box" name="query_display_order" class="form-control">
       </div>
 
-      <button>
+      <button class="btn btn-primary">
         Create experience
       </button>
     </form>

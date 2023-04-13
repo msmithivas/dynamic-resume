@@ -47,7 +47,7 @@
         <textarea id="objective_box" name="query_objective" rows="3"></textarea>
       </div>
 
-      <button>
+      <button class="btn btn-primary">
         Create resume
       </button>
     </form>
@@ -57,43 +57,15 @@
 <hr>
 <div>
   <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Name
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Display
-        </th>
-
-        <th>
-          Objective
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <%# @list_of_resumes.each do |a_resume| %>
-            <%# end %>
-    </table>
+    <div class="container">
+    <%= rails_db_data_table 'resumes', footer: false, 
+          columns:['id', 'name', 'user_id', 'objective', 'display'],
+          header: true,
+          limit: 20,
+          order_by: :id,
+          order: :asc
+    %>
+</div>
   </div>
 </div>
 

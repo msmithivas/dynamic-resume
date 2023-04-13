@@ -8,16 +8,16 @@ Rails.application.routes.draw do
   post("/insert_experience", { :controller => "experiences", :action => "create" })
           
   # READ
-  get("/experiences", { :controller => "experiences", :action => "index" })
+  get("/profiles", { :controller => "experiences", :action => "index" })
   
-  get("/experiences/:path_id", { :controller => "experiences", :action => "show" })
+  get("/profiles/:path_id", { :controller => "experiences", :action => "show" })
   
   # UPDATE
   
-  post("/modify_experience/:path_id", { :controller => "experiences", :action => "update" })
+  post("/modify_profile/:path_id", { :controller => "experiences", :action => "update" })
   
   # DELETE
-  get("/delete_experience/:path_id", { :controller => "experiences", :action => "destroy" })
+  get("/delete_profile/:path_id", { :controller => "experiences", :action => "destroy" })
 
   #------------------------------
 
