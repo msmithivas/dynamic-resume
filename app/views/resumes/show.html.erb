@@ -1,130 +1,127 @@
-<div>
-  <div>
-    <h1>
-      Resume #<%= @the_resume.id %> details
-    </h1>
+<div class="row">
+  <div class="col-md-6">
 
     <div>
-      <div>
-        <a href="/resumes">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_resume/<%= @the_resume.id %>">
-          Delete resume
-        </a>
-      </div>
+      <a href="/resumes">
+        Go back
+      </a>
     </div>
 
+    <div>
+      <a href="/delete_resume/<%= @the_resume.id %>">
+        Delete resume
+      </a>
+    </div>
+
+    <hr>
+
+    <h1 class="text-center">
+      <%= @the_resume.name %>
+    </h1>
+
+    <h4 class="mb-3">Objective:</h4>
+
+    <p class="lead">
+      <%= @the_resume.objective %>
+    </p>
+
+    <hr>
+
+    <% @the_resume.experiences.each do |exp| %>
+      <p class="fw-bold"><%= exp.job.employer.name %></p>
+      <span class="badge text-bg-primary"><%= exp.job.title %></span>
+      <p></p>
+      <%= exp.job.description %>
+      <p></p>
+      <%= "Skills: " + exp.job.skills %>
+      <hr>
+
+    <% end %>
+
+    <div>
+      <form action="/insert_experience" method="post" class="row gy-2 gx-3 align-items-center">
+
+        <input name="query_resume_id" id="resume_id_box" type="hidden" value="<%= @the_resume.id %>">
+
+        <div class="col-auto">
+          <label for="job_id_box" class="form-label">
+            Job
+          </label>
+
+          <select name="query_job_id" id="job_id_box" class="form-control">
+            <% Job.all.order(:name).each do |job| %>
+              <option value="<%= job.id %>">
+                <%= job.title %>
+              </option>
+            <% end %>
+          </select>
+        </div>
+
+        <div class="col-auto">
+          <label for="display_order_box" class="form-label">
+            Display order
+          </label>
+
+          <input type="text" id="display_order_box" name="query_display_order" class="form-control">
+        </div>
+
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary">
+            Create experience
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
-<hr>
+  <div>
+    <div>
 
-<div class="container">
-  <h1 class="text-center"> My resume </h1>
+      <h2>
+        Edit resume
+      </h2>
 
-  <h4> Objective:</h4>
-  <p></p>
-  <p class="lead">
-    <%= @the_resume.objective %></p>
+      <form action="/modify_resume/<%= @the_resume.id %>"  method="post" >
+        <div>
+          <label for="name_box">
+            Name
+          </label>
+
+          <input type="text" id="name_box" name="query_name" value="<%= @the_resume.name %>">
+        </div>
+
+        <div>
+          <label for="user_id_box">
+            User
+          </label>
+
+          <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_resume.user_id %>">
+        </div>
+
+        <div>
+          <input type="checkbox" id="display_box" name="query_display" value="1" <%= "checked" if @the_resume.display %>>
+
+          <label for="display_box">
+            Display
+          </label>
+        </div>
+
+        <div>
+          <label for="objective_box">
+            Objective
+          </label>
+
+          <textarea id="objective_box" name="query_objective"><%= @the_resume.objective %></textarea>
+        </div>
+
+        <button>
+          Update resume
+        </button>
+      </form>
+    </div>
+  </div>
 
   <hr>
 
-  <% @the_resume.experiences.each do |exp| %>
-    <p class="fw-bold"><%= exp.job.employer.name %></p>
-    <span class="badge text-bg-primary"><%= exp.job.title %></span>
-    <p></p>
-    <%= exp.job.description %>
-    <p></p>
-    <%= "Skills: " + exp.job.skills %>
-    <hr>
-
-  <% end %>
-
-  <div>
-    <form action="/insert_experience" method="post" class="row gy-2 gx-3 align-items-center">
-
-      <input name="query_resume_id" id="resume_id_box" type="hidden" value="<%= @the_resume.id %>">
-
-      <div class="col-auto">
-        <label for="job_id_box" class="form-label">
-          Job
-        </label>
-
-        <select name="query_job_id" id="job_id_box" class="form-control">
-          <% Job.all.order(:name).each do |job| %>
-            <option value="<%= job.id %>">
-              <%= job.title %>
-            </option>
-          <% end %>
-        </select>
-      </div>
-
-      <div class="col-auto">
-        <label for="display_order_box" class="form-label">
-          Display order
-        </label>
-
-        <input type="text" id="display_order_box" name="query_display_order" class="form-control">
-      </div>
-
-      <div class="col-auto">
-        <button type="submit" class="btn btn-primary">
-          Create experience
-        </button>
-      </div>
-    </form>
-  </div>
 </div>
-
-<div>
-  <div>
-
-    <h2>
-      Edit resume
-    </h2>
-
-    <form action="/modify_resume/<%= @the_resume.id %>"  method="post" >
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name" value="<%= @the_resume.name %>">
-      </div>
-
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_resume.user_id %>">
-      </div>
-
-      <div>
-        <input type="checkbox" id="display_box" name="query_display" value="1" <%= "checked" if @the_resume.display %>>
-
-        <label for="display_box">
-          Display
-        </label>
-      </div>
-
-      <div>
-        <label for="objective_box">
-          Objective
-        </label>
-
-        <textarea id="objective_box" name="query_objective"><%= @the_resume.objective %></textarea>
-      </div>
-
-      <button>
-        Update resume
-      </button>
-    </form>
-  </div>
 </div>
-
-<hr>
