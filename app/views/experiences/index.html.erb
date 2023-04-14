@@ -31,7 +31,13 @@
           Resume
         </label>
 
-        <input type="text" id="resume_id_box" name="query_resume_id" class="form-control">
+        <select name="query_resume_id" id="resume_id_box" class="form-control">
+          <% Resume.all.order(:name).each do |resume| %>
+            <option value="<%= resume.id %>">
+              <%= resume.name %>
+            </option>
+          <% end %>
+        </select>
       </div>
 
       <div class="col-auto">
@@ -39,7 +45,13 @@
           Job
         </label>
 
-        <input type="text" id="job_id_box" name="query_job_id" class="form-control">
+        <select name="query_job_id" id="job_id_box" class="form-control">
+          <% Job.all.order(:name).each do |job| %>
+            <option value="<%= job.id %>">
+              <%= job.title %>
+            </option>
+          <% end %>
+        </select>
       </div>
 
       
