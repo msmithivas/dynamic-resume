@@ -18,31 +18,66 @@
       </div>
     </div>
 
-      </div>
+  </div>
 </div>
 
 <hr>
 
 <div class="container">
-<h1 class="text-center"> My resume </h1>
+  <h1 class="text-center"> My resume </h1>
 
-<h4> Objective:</h4>
-<p></p>
-<p class="lead">
-<%= @the_resume.objective %></p>
+  <h4> Objective:</h4>
+  <p></p>
+  <p class="lead">
+    <%= @the_resume.objective %></p>
 
-<hr>
+  <hr>
 
-<% @the_resume.experiences.each do |exp| %>
-<p class="fw-bold"><%= exp.job.employer.name %></p>
-<span class="badge text-bg-primary"><%= exp.job.title %></span>
-<p></p>
-<%= exp.job.description %>
-<p></p>
-<%= "Skills: " + exp.job.skills %>
-<hr>
+  <% @the_resume.experiences.each do |exp| %>
+    <p class="fw-bold"><%= exp.job.employer.name %></p>
+    <span class="badge text-bg-primary"><%= exp.job.title %></span>
+    <p></p>
+    <%= exp.job.description %>
+    <p></p>
+    <%= "Skills: " + exp.job.skills %>
+    <hr>
 
-<% end %>
+  <% end %>
+
+  <div>
+    <form action="/insert_experience" method="post" class="row gy-2 gx-3 align-items-center">
+
+      <input name="query_resume_id" id="resume_id_box" type="hidden" value="<%= @the_resume.id %>">
+
+      <div class="col-auto">
+        <label for="job_id_box" class="form-label">
+          Job
+        </label>
+
+        <select name="query_job_id" id="job_id_box" class="form-control">
+          <% Job.all.order(:name).each do |job| %>
+            <option value="<%= job.id %>">
+              <%= job.title %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="col-auto">
+        <label for="display_order_box" class="form-label">
+          Display order
+        </label>
+
+        <input type="text" id="display_order_box" name="query_display_order" class="form-control">
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">
+          Create experience
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <div>
@@ -73,7 +108,7 @@
         <input type="checkbox" id="display_box" name="query_display" value="1" <%= "checked" if @the_resume.display %>>
 
         <label for="display_box">
-            Display
+          Display
         </label>
       </div>
 
