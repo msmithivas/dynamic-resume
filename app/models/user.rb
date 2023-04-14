@@ -19,4 +19,7 @@ class User < ApplicationRecord
 
   has_many  :resumes, class_name: "Resume", foreign_key: "user_id", dependent: :destroy
   
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -26,7 +26,7 @@ class ExperiencesController < ApplicationController
 
     if the_experience.valid?
       the_experience.save
-      redirect_to("/profiles", { :notice => "Experience created successfully." })
+      redirect_to("/resumes/#{the_experience.resume_id}", { :notice => "Experience created successfully." })
     else
       redirect_to("/profiles", { :alert => the_experience.errors.full_messages.to_sentence })
     end

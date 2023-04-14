@@ -25,26 +25,38 @@
       Add a new career profile
     </h2>
 
-    <form action="/insert_experience" method="post">
-      <div class="mb-3">
+    <form action="/insert_experience" method="post" class="row gy-2 gx-3 align-items-center">
+      <div class="col-auto">
         <label for="resume_id_box" class="form-label">
           Resume
         </label>
 
-        <input type="text" id="resume_id_box" name="query_resume_id" class="form-control">
+        <select name="query_resume_id" id="resume_id_box" class="form-control">
+          <% Resume.all.order(:name).each do |resume| %>
+            <option value="<%= resume.id %>">
+              <%= resume.name %>
+            </option>
+          <% end %>
+        </select>
       </div>
 
-      <div class="mb-3">
+      <div class="col-auto">
         <label for="job_id_box" class="form-label">
           Job
         </label>
 
-        <input type="text" id="job_id_box" name="query_job_id" class="form-control">
+        <select name="query_job_id" id="job_id_box" class="form-control">
+          <% Job.all.order(:name).each do |job| %>
+            <option value="<%= job.id %>">
+              <%= job.title %>
+            </option>
+          <% end %>
+        </select>
       </div>
 
       
 
-      <div class="mb-3">
+      <div class="col-auto">
         <label for="display_order_box" class="form-label">
           Display order
         </label>
@@ -52,9 +64,11 @@
         <input type="text" id="display_order_box" name="query_display_order" class="form-control">
       </div>
 
-      <button class="btn btn-primary">
+      <div class="col-auto">
+      <button type="submit" class="btn btn-primary">
         Create experience
       </button>
+      </div>
     </form>
   </div>
 </div>
