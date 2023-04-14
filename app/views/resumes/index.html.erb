@@ -16,8 +16,8 @@
       Add a new resume
     </h2>
 
-    <form action="/insert_resume" method="post">
-      <div>
+    <form action="/insert_resume" method="post" class="row gy-2 gx-3 align-items-center">
+      <div class="col-auto">
         <label for="name_box">
           Name
         </label>
@@ -25,7 +25,7 @@
         <input type="text" id="name_box" name="query_name">
       </div>
 
-      <div>
+      <div class="col-auto">
         <label for="user_id_box">
           User
         </label>
@@ -33,13 +33,13 @@
         <input type="text" id="user_id_box" name="query_user_id">
       </div>
 
-      <div>
+      <div class="col-auto">
         <input type="checkbox" id="display_box" name="query_display" value="1">
 
         <label for="display_box">Display</label>
       </div>
 
-      <div>
+      <div class="col-auto">
         <label for="objective_box">
           Objective
         </label>
@@ -47,9 +47,11 @@
         <textarea id="objective_box" name="query_objective" rows="3"></textarea>
       </div>
 
-      <button class="btn btn-primary">
+      <div class="col-auto">
+      <button type="submit" class="btn btn-primary">
         Create resume
       </button>
+      </div>
     </form>
   </div>
 </div>

@@ -23,7 +23,8 @@
 
 <hr>
 
-<h1 class="text-center"> Sample resume </h1>
+<div class="container">
+<h1 class="text-center"> My resume </h1>
 
 <h4> Objective:</h4>
 <p></p>
@@ -33,6 +34,7 @@
 <hr>
 
 <% @the_resume.experiences.each do |exp| %>
+<p class="fw-bold"><%= exp.job.employer.name %></p>
 <span class="badge text-bg-primary"><%= exp.job.title %></span>
 <p></p>
 <%= exp.job.description %>
@@ -41,7 +43,7 @@
 <hr>
 
 <% end %>
-
+</div>
 
 <div>
   <div>

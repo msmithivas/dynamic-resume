@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    render({ :template => "resumes/index.html.erb" })
+    render({ :template => "layouts/index.html.erb" })
   end
 
 
