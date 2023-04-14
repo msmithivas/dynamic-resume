@@ -67,15 +67,16 @@
 
         <div class="col-auto">
           <button type="submit" class="btn btn-primary">
-            Create experience
+            Add job to resume
           </button>
         </div>
       </form>
     </div>
   </div>
+<hr>
 
-  <div>
-    <div>
+  <div class="row">
+  <div class="offset-md-3 col-md-6">
 
       <h2>
         Edit resume
@@ -95,7 +96,7 @@
             User
           </label>
 
-          <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_resume.user_id %>">
+          <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_resume.user.first_name %>">
         </div>
 
         <div>

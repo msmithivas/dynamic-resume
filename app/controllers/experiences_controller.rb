@@ -55,6 +55,6 @@ class ExperiencesController < ApplicationController
 
     the_experience.destroy
 
-    redirect_to("/experiences", { :notice => "Experience deleted successfully."} )
+    redirect_to("/profiles", { :notice => "Experience deleted successfully."} )
   end
 end

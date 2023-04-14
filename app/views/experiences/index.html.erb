@@ -14,7 +14,7 @@
 
   <div class="text-center">
     <h2>
-      Add a job to your resume
+      Add a job to your profile
     </h2>
 
     <form action="/insert_experience" method="post" class="row gy-2 gx-3 align-items-center">
@@ -66,4 +66,15 @@
 
 
 <hr>
+<%= notice %>
 
+<% Resume.all.order(:id).each do |resume| %>
+<h3><%= resume.name %></h3>
+  <% resume.experiences.each do |exp| %>
+  <div class="row">
+  <span class="col-md-6"><%= exp.job.title %></span>
+  <a href="/delete_profile/<%= exp.id %>" class="link-danger">Delete</a>
+  <span class="text-center"><%= exp.display_order %></span>
+  </div>
+  <% end %>
+<% end %>

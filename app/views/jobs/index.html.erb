@@ -8,15 +8,22 @@
 
 <hr>
 
-<hr>
-<div class="container">
-  <%= rails_db_data_table 'jobs', footer: false, 
-                                columns:[ 'title', 'description', 'skills'],
-                                header: true,
-                                limit: 20,
-                                order_by: :id,
-                                order: :asc
-%>
+<div class="row">
+  <div class="offset-md-3 col-md-6">
+<div class="list-group">
+      <% Job.all.order(:id).each do |job| %>
+        <a href="/jobs/<%= job.id %>" class="list-group-item list-group-item-action">
+          <div class="fw-bold">
+            <%= job.title %>
+          </div>
+
+          <div>
+            <%= job.description %>
+          </div>
+        </a>
+      <% end %>
+    </div>
+</div>
 </div>
 
 <div class="row">
@@ -74,9 +81,13 @@
         <textarea id="skills_box" name="query_skills" rows="3" class="form-control"></textarea>
       </div>
 
+      <div class="mb-3">
+            <div class="d-grid">
       <button type="submit" class="btn btn-primary">
         Create job
       </button>
+      </div>
+      </div>
     </form>
   </div>
 </div>
