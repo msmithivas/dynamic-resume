@@ -1,28 +1,20 @@
-<div>
-  <div>
-    <h1 class="text-center">
+
+  <div class="text-center">
+    <h1>
       Build a career profile
     </h1>
-  </div>
   For each resume, you can create a profile, which will show the jobs you wish to display.
-</div>
+  </div>
 
-<div class="container">
-    <%= rails_db_data_table 'resumes', footer: false, 
-          columns:['id', 'name', 'user_id', 'objective', 'display'],
-          header: true,
-          limit: 20,
-          order_by: :id,
-          order: :asc
-    %>
-</div>
+
+
 
 <hr>
 
-<div>
-  <div>
+
+  <div class="text-center">
     <h2>
-      Add a new career profile
+      Add a job to your resume
     </h2>
 
     <form action="/insert_experience" method="post" class="row gy-2 gx-3 align-items-center">
@@ -32,7 +24,7 @@
         </label>
 
         <select name="query_resume_id" id="resume_id_box" class="form-control">
-          <% Resume.all.order(:name).each do |resume| %>
+          <% Resume.all.order(:id).each do |resume| %>
             <option value="<%= resume.id %>">
               <%= resume.name %>
             </option>
@@ -46,7 +38,7 @@
         </label>
 
         <select name="query_job_id" id="job_id_box" class="form-control">
-          <% Job.all.order(:name).each do |job| %>
+          <% Job.all.order(:id).each do |job| %>
             <option value="<%= job.id %>">
               <%= job.title %>
             </option>
@@ -66,22 +58,12 @@
 
       <div class="col-auto">
       <button type="submit" class="btn btn-primary">
-        Create experience
+        Add to profile
       </button>
       </div>
     </form>
   </div>
-</div>
+
 
 <hr>
-<div class="container">
-    <%= rails_db_data_table 'jobs', footer: false, 
-          columns:['id', 'title', 'description', 'skills'],
-          header: true,
-          limit: 20,
-          order_by: :title,
-          order: :asc
-    %>
-</div>
 
-<hr>
